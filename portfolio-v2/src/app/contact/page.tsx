@@ -6,8 +6,8 @@ import { useState } from 'react';
  * Contact Page - Sends emails via Web3Forms
  */
 
-// Get your access key from https://web3forms.com (it's free)
-const WEB3FORMS_ACCESS_KEY = 'bce41a4a-fd33-4002-bf26-9014f0ed9dbc';
+// Access key from environment variable (set in Vercel dashboard)
+const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '';
 
 export default function Contact() {
   const [formData, setFormData] = useState({

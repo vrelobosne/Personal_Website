@@ -3,6 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { personalInfo } from "@/data/personal";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 /**
  * Root Layout Component
@@ -21,8 +23,8 @@ export const metadata: Metadata = {
   authors: [{ name: personalInfo.name }],
   creator: personalInfo.name,
   openGraph: {
-    title: `${personalInfo.name}'s Personal Website`,
-    description: `Learn more about ${personalInfo.name}`,
+    title: `${personalInfo.name} | Software Engineer`,
+    description: 'Software Engineer building scalable systems, developer tooling, and enterprise infrastructure.',
     url: 'https://elvedin.dev',
     siteName: personalInfo.name,
     images: [
@@ -30,11 +32,17 @@ export const metadata: Metadata = {
         url: '/images/SM_Landingpage.png',
         width: 1200,
         height: 630,
-        alt: `${personalInfo.name} Portfolio`,
+        alt: `${personalInfo.name} - Software Engineer Portfolio`,
       },
     ],
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${personalInfo.name} | Software Engineer`,
+    description: 'Software Engineer building scalable systems, developer tooling, and enterprise infrastructure.',
+    images: ['/images/SM_Landingpage.png'],
   },
   icons: {
     icon: [
@@ -84,6 +92,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
