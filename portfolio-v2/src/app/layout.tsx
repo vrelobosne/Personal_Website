@@ -19,9 +19,13 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://elvedin.dev'),
   title: `${personalInfo.name} - ${personalInfo.title}`,
   description: `${personalInfo.name}'s personal portfolio. ${personalInfo.title} at ${personalInfo.university} exploring web development, programming, and technology.`,
-  keywords: ['Elvedin Handzic', 'Computer Science', 'UMN', 'University of Minnesota', 'Web Developer', 'Portfolio'],
+  keywords: ['Elvedin Handzic', 'Software Engineer', 'Developer', 'Portfolio', 'Full Stack'],
   authors: [{ name: personalInfo.name }],
   creator: personalInfo.name,
+  // Canonical URL for SEO
+  alternates: {
+    canonical: 'https://elvedin.dev',
+  },
   openGraph: {
     title: `${personalInfo.name} | Software Engineer`,
     description: 'Software Engineer building scalable systems, developer tooling, and enterprise infrastructure.',
@@ -53,7 +57,10 @@ export const metadata: Metadata = {
       { url: '/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
-  manifest: '/site.webmanifest',
+  // Verification for search consoles (add your IDs later)
+  verification: {
+    google: '', // Add your Google Search Console ID
+  },
 };
 
 export default function RootLayout({
@@ -64,6 +71,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        {/* Preconnect for faster external resource loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* DNS prefetch for third-party services */}
+        <link rel="dns-prefetch" href="https://api.web3forms.com" />
+        <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
+
+        {/* Theme color for mobile browsers */}
+        <meta name="theme-color" content="#0A0A0A" />
+
         {/* JSON-LD Structured Data for SEO */}
         <script
           type="application/ld+json"
@@ -77,18 +95,22 @@ export default function RootLayout({
                 'https://www.linkedin.com/in/handzice/',
                 'https://github.com/vrelobosne',
               ],
-              jobTitle: personalInfo.title,
-              worksFor: {
-                '@type': 'EducationalOrganization',
-                name: personalInfo.university,
-              },
+              jobTitle: 'Software Engineer',
+              description: 'Software Engineer building scalable systems, developer tooling, and enterprise infrastructure.',
             }),
           }}
         />
       </head>
       <body className="antialiased">
+        {/* Skip to content link for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black"
+        >
+          Skip to main content
+        </a>
         <Navbar />
-        <main className="min-h-screen pt-20">
+        <main id="main-content" className="min-h-screen pt-20" role="main">
           {children}
         </main>
         <Footer />
