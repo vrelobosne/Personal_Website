@@ -33,6 +33,10 @@ const SystemStatus = dynamic(() => import('@/components/home/LiveMetrics').then(
   ssr: false,
 });
 
+const CSSGlobe = dynamic(() => import('@/components/home/CSSGlobe'), {
+  ssr: false,
+});
+
 export default function Home() {
   const router = useRouter();
   const isMobile = useIsMobile();
@@ -100,17 +104,15 @@ export default function Home() {
             {/* Right - Globe (desktop) or Static visual (mobile) */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
               {isMobile ? (
-                // Mobile: Simple static visual
-                <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px]">
+                // Mobile: Lightweight CSS globe (no Three.js)
+                <div
+                  className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] cursor-pointer"
+                  onClick={handleGlobeClick}
+                >
                   <div className="absolute inset-0 border-2 border-cyan-400/30 rounded-full"
                     style={{ boxShadow: '0 0 30px rgba(0, 217, 255, 0.15)' }}
                   />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-6xl mb-2">🌍</div>
-                      <p className="text-xs text-gray-500">Tap to explore</p>
-                    </div>
-                  </div>
+                  <CSSGlobe />
                 </div>
               ) : (
                 // Desktop: Lazy-loaded 3D globe
