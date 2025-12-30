@@ -2,17 +2,15 @@
 
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
 import Skills from '@/components/home/Skills';
 import Experience from '@/components/home/Experience';
 import Achievements from '@/components/home/Achievements';
 import Interests from '@/components/home/Interests';
 import ScrollReveal, { AnimatedCounter } from '@/components/ui/ScrollReveal';
 import GlowingButton from '@/components/ui/GlowingButton';
-import LiveMetrics, { DataParticles, SystemStatus } from '@/components/home/LiveMetrics';
-import SpaceBackground from '@/components/home/SpaceBackground';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
-// Dynamically import Earth Globe to avoid SSR issues with Three.js
+// Dynamically import heavy components - only load on desktop
 const EarthGlobe = dynamic(() => import('@/components/home/EarthGlobe'), {
   ssr: false,
   loading: () => (
@@ -22,136 +20,117 @@ const EarthGlobe = dynamic(() => import('@/components/home/EarthGlobe'), {
   ),
 });
 
+const SpaceBackground = dynamic(() => import('@/components/home/SpaceBackground'), {
+  ssr: false,
+});
+
+const LiveMetrics = dynamic(() => import('@/components/home/LiveMetrics').then(mod => ({ default: mod.default })), {
+  ssr: false,
+});
+
+const DataParticles = dynamic(() => import('@/components/home/LiveMetrics').then(mod => ({ default: mod.DataParticles })), {
+  ssr: false,
+});
+
+const SystemStatus = dynamic(() => import('@/components/home/LiveMetrics').then(mod => ({ default: mod.SystemStatus })), {
+  ssr: false,
+});
+
 export default function Home() {
   const router = useRouter();
+  const isMobile = useIsMobile();
 
   const handleGlobeClick = () => {
     router.push('/globe');
   };
 
   return (
-    <div className="bg-background dark:bg-[#0A0A0A]">
-      {/* Hero Section - Artistic Layout */}
+    <div className="bg-[#0A0A0A]">
+      {/* Hero Section */}
       <section className="min-h-screen flex items-center relative overflow-hidden">
-        {/* Space Background - only visible in dark mode */}
-        <div className="hidden dark:block">
-          <SpaceBackground />
-        </div>
+        {/* Space Background - desktop only */}
+        {!isMobile && <SpaceBackground />}
+
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
-            {/* Left - Typography */}
+            {/* Left - Typography (no Framer Motion on mobile) */}
             <div className="order-2 lg:order-1 z-10">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-sm tracking-[0.3em] uppercase text-textMuted dark:text-gray-400 mb-6"
-              >
+              <p className="text-sm tracking-[0.3em] uppercase text-gray-400 mb-6 animate-fade-in">
                 Software Engineer
-              </motion.p>
+              </p>
 
-              <motion.h1
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.9] mb-8 text-text dark:text-white tracking-tight"
-              >
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.9] mb-8 text-white tracking-tight animate-slide-in">
                 I BUILD
                 <br />
-                <span className="text-textMuted dark:text-gray-400">SCALABLE</span>
+                <span className="text-gray-400">SCALABLE</span>
                 <br />
                 SYSTEMS
-              </motion.h1>
+              </h1>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-base sm:text-lg text-textMuted dark:text-gray-400 mb-10 max-w-md leading-relaxed"
-              >
+              <p className="text-base sm:text-lg text-gray-400 mb-10 max-w-md leading-relaxed animate-fade-in-delay">
                 Systems programming, internal tooling, and automation.
                 Building infrastructure that powers enterprise applications.
-              </motion.p>
+              </p>
 
-              {/* Glowing CTA Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-              >
+              <div className="animate-fade-in-delay-2">
                 <GlowingButton href="/contact">
                   LET'S CONNECT
                 </GlowingButton>
-              </motion.div>
+              </div>
 
-              {/* Scroll indicator */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2 }}
-                className="hidden lg:flex items-center gap-3 mt-20 text-textMuted dark:text-gray-400"
-              >
-                <motion.div
-                  className="w-8 h-[1px] bg-textMuted dark:bg-gray-600"
-                  animate={{ scaleX: [1, 1.5, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <span className="text-xs tracking-widest uppercase">Scroll down</span>
-                <motion.span
-                  animate={{ y: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="text-cyan-400"
-                >
-                  ↓
-                </motion.span>
-              </motion.div>
+              {/* Scroll indicator - desktop only */}
+              {!isMobile && (
+                <div className="hidden lg:flex items-center gap-3 mt-20 text-gray-400">
+                  <div className="w-8 h-[1px] bg-gray-600" />
+                  <span className="text-xs tracking-widest uppercase">Scroll down</span>
+                  <span className="text-cyan-400 animate-bounce">↓</span>
+                </div>
+              )}
             </div>
 
-            {/* Right - Globe with Live Dashboard */}
+            {/* Right - Globe (desktop) or Static visual (mobile) */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div
-                className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-[480px] md:h-[480px] lg:w-[550px] lg:h-[550px] cursor-pointer group"
-                onClick={handleGlobeClick}
-              >
-                {/* Circular border frame with glow */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute inset-0 border-2 border-cyan-400/30 dark:border-cyan-400/40 rounded-full pointer-events-none"
-                  style={{
-                    boxShadow: '0 0 30px rgba(0, 217, 255, 0.15)',
-                  }}
-                />
-
-                {/* Data particles floating around */}
-                <DataParticles />
-
-                {/* System status indicator */}
-                <SystemStatus />
-
-                {/* Globe content */}
-                <EarthGlobe interactive={false} autoRotate={true} />
-
-                {/* Live metrics dashboard */}
-                <LiveMetrics />
-              </div>
+              {isMobile ? (
+                // Mobile: Simple static visual
+                <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px]">
+                  <div className="absolute inset-0 border-2 border-cyan-400/30 rounded-full"
+                    style={{ boxShadow: '0 0 30px rgba(0, 217, 255, 0.15)' }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-6xl mb-2">🌍</div>
+                      <p className="text-xs text-gray-500">Tap to explore</p>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                // Desktop: Full 3D globe
+                <div
+                  className="relative w-[480px] h-[480px] lg:w-[550px] lg:h-[550px] cursor-pointer group"
+                  onClick={handleGlobeClick}
+                >
+                  <div
+                    className="absolute inset-0 border-2 border-cyan-400/40 rounded-full pointer-events-none"
+                    style={{ boxShadow: '0 0 30px rgba(0, 217, 255, 0.15)' }}
+                  />
+                  <DataParticles />
+                  <SystemStatus />
+                  <EarthGlobe interactive={false} autoRotate={true} />
+                  <LiveMetrics />
+                </div>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Decorative elements */}
-        <motion.div
-          className="absolute top-20 right-10 w-2 h-2 bg-cyan-400 rounded-full"
-          animate={{ opacity: [0.2, 0.8, 0.2] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute bottom-32 left-20 w-3 h-3 bg-cyan-400 rounded-full"
-          animate={{ opacity: [0.1, 0.5, 0.1] }}
-          transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-        />
+        {/* Decorative elements - desktop only */}
+        {!isMobile && (
+          <>
+            <div className="absolute top-20 right-10 w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+            <div className="absolute bottom-32 left-20 w-3 h-3 bg-cyan-400 rounded-full animate-pulse" />
+          </>
+        )}
       </section>
 
       {/* Stats Section */}
@@ -218,17 +197,12 @@ export default function Home() {
           }} />
         </div>
 
-        {/* Central glow */}
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+        {/* Central glow - static on mobile */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
           style={{
             background: 'radial-gradient(circle, rgba(0, 217, 255, 0.15) 0%, transparent 70%)',
           }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 4, repeat: Infinity }}
         />
 
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
