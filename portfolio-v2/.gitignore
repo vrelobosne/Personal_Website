@@ -40,3 +40,10 @@ coverage/
 
 # Misc
 *.log
+
+# Screenshots and dev files
+screenshots/
+screenshot.js
+test-features.js
+map_output.txt
+process_map.py
