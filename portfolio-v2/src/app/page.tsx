@@ -32,9 +32,6 @@ const SystemStatus = dynamic(() => import('@/components/home/LiveMetrics').then(
   ssr: false,
 });
 
-const CSSGlobe = dynamic(() => import('@/components/home/CSSGlobe'), {
-  ssr: false,
-});
 
 export default function Home() {
   const router = useRouter();
@@ -89,35 +86,25 @@ export default function Home() {
               )}
             </div>
 
-            {/* Right - Globe (desktop) or Static visual (mobile) */}
+            {/* Right - Globe */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              {isMobile ? (
-                // Mobile: Lightweight CSS globe (no Three.js)
+              <div
+                className={`relative cursor-pointer group ${
+                  isMobile
+                    ? 'w-[280px] h-[280px] sm:w-[320px] sm:h-[320px]'
+                    : 'w-[480px] h-[480px] lg:w-[550px] lg:h-[550px]'
+                }`}
+                onClick={handleGlobeClick}
+              >
                 <div
-                  className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] cursor-pointer"
-                  onClick={handleGlobeClick}
-                >
-                  <div className="absolute inset-0 border-2 border-cyan-400/30 rounded-full"
-                    style={{ boxShadow: '0 0 30px rgba(0, 217, 255, 0.15)' }}
-                  />
-                  <CSSGlobe />
-                </div>
-              ) : (
-                // Desktop: Full 3D globe
-                <div
-                  className="relative w-[480px] h-[480px] lg:w-[550px] lg:h-[550px] cursor-pointer group"
-                  onClick={handleGlobeClick}
-                >
-                  <div
-                    className="absolute inset-0 border-2 border-cyan-400/40 rounded-full pointer-events-none"
-                    style={{ boxShadow: '0 0 30px rgba(0, 217, 255, 0.15)' }}
-                  />
-                  <DataParticles />
-                  <SystemStatus />
-                  <EarthGlobe interactive={false} autoRotate={true} />
-                  <LiveMetrics />
-                </div>
-              )}
+                  className="absolute inset-0 border-2 border-cyan-400/40 rounded-full pointer-events-none"
+                  style={{ boxShadow: '0 0 30px rgba(0, 217, 255, 0.15)' }}
+                />
+                {!isMobile && <DataParticles />}
+                {!isMobile && <SystemStatus />}
+                <EarthGlobe interactive={false} autoRotate={true} showMoon={!isMobile} />
+                {!isMobile && <LiveMetrics />}
+              </div>
             </div>
           </div>
         </div>

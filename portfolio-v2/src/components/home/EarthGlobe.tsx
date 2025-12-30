@@ -516,6 +516,7 @@ function VoxelMoon() {
 interface EarthGlobeProps {
   interactive?: boolean;
   autoRotate?: boolean;
+  showMoon?: boolean;
   className?: string;
   onClick?: () => void;
 }
@@ -523,6 +524,7 @@ interface EarthGlobeProps {
 export default function EarthGlobe({
   interactive = false,
   autoRotate = false,
+  showMoon = true,
   className = '',
   onClick,
 }: EarthGlobeProps) {
@@ -575,7 +577,7 @@ export default function EarthGlobe({
 
         <group scale={1.0}> {/* Reset scale */}
           <VoxelEarth autoRotate={autoRotate} isDarkMode={isDarkMode} />
-          {isDarkMode && <VoxelMoon />}
+          {isDarkMode && showMoon && <VoxelMoon />}
         </group>
 
 
