@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Custom Font Face Declarations
+ * Loading Playfair Display from local fonts folder
+ */
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/playfair-display-v30-latin-regular.woff2') format('woff2'),
+    url('/fonts/playfair-display-v30-latin-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/playfair-display-v30-latin-500.woff2') format('woff2'),
+    url('/fonts/playfair-display-v30-latin-500.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/playfair-display-v30-latin-700.woff2') format('woff2'),
+    url('/fonts/playfair-display-v30-latin-700.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/playfair-display-v30-latin-800.woff2') format('woff2'),
+    url('/fonts/playfair-display-v30-latin-800.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/playfair-display-v30-latin-900.woff2') format('woff2'),
+    url('/fonts/playfair-display-v30-latin-900.woff') format('woff');
+}
+
+/**
+ * Base Styles
+ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #000000;
+  background-color: #F8F8F8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode styles */
+html.dark body {
+  color: #FFFFFF;
+  background-color: #0A0A0A;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F8F8;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #1A1A1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #444444;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #666666;
+}
+
+/* Star twinkle animation - GPU accelerated CSS */
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.star-twinkle {
+  animation: star-twinkle ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* Astronaut floating animation */
+@keyframes astronaut-float {
+  0%, 100% {
+    transform: scale(0.5) translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: scale(0.5) translate(-10px, 8px) rotate(-10deg);
+  }
+}
+
+.astronaut-float {
+  animation: astronaut-float 12s ease-in-out infinite;
+}
+
+/* Subtle blue diffuse glow for dark mode */
+html.dark body {
+  position: relative;
+}
+
+html.dark body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow:
+    inset 0 0 120px rgba(59, 130, 246, 0.08),
+    inset 0 0 60px rgba(59, 130, 246, 0.05);
+}
+
+/* Blue glow on interactive elements in dark mode */
+@layer utilities {
+  .glow-blue-subtle {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+  }
+
+  .glow-blue-hover {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .glow-blue-hover:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);
+  }
+}
