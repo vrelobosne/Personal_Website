@@ -1,7 +1,6 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Skills from '@/components/home/Skills';
 import Experience from '@/components/home/Experience';
@@ -40,17 +39,6 @@ const CSSGlobe = dynamic(() => import('@/components/home/CSSGlobe'), {
 export default function Home() {
   const router = useRouter();
   const isMobile = useIsMobile();
-  const [globeLoaded, setGlobeLoaded] = useState(false);
-
-  // Lazy load globe after page renders (3 second delay)
-  useEffect(() => {
-    if (!isMobile) {
-      const timer = setTimeout(() => {
-        setGlobeLoaded(true);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [isMobile]);
 
   const handleGlobeClick = () => {
     router.push('/globe');
@@ -115,7 +103,7 @@ export default function Home() {
                   <CSSGlobe />
                 </div>
               ) : (
-                // Desktop: Lazy-loaded 3D globe
+                // Desktop: Full 3D globe
                 <div
                   className="relative w-[480px] h-[480px] lg:w-[550px] lg:h-[550px] cursor-pointer group"
                   onClick={handleGlobeClick}
@@ -124,24 +112,10 @@ export default function Home() {
                     className="absolute inset-0 border-2 border-cyan-400/40 rounded-full pointer-events-none"
                     style={{ boxShadow: '0 0 30px rgba(0, 217, 255, 0.15)' }}
                   />
-
-                  {globeLoaded ? (
-                    // Full 3D globe after delay
-                    <>
-                      <DataParticles />
-                      <SystemStatus />
-                      <EarthGlobe interactive={false} autoRotate={true} />
-                      <LiveMetrics />
-                    </>
-                  ) : (
-                    // Placeholder while loading
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-16 h-16 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin mb-4 mx-auto" />
-                        <p className="text-xs text-gray-500">Loading globe...</p>
-                      </div>
-                    </div>
-                  )}
+                  <DataParticles />
+                  <SystemStatus />
+                  <EarthGlobe interactive={false} autoRotate={true} />
+                  <LiveMetrics />
                 </div>
               )}
             </div>
