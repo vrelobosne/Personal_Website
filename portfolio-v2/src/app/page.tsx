@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Skills from '@/components/home/Skills';
 import Experience from '@/components/home/Experience';
@@ -10,14 +11,10 @@ import ScrollReveal, { AnimatedCounter } from '@/components/ui/ScrollReveal';
 import GlowingButton from '@/components/ui/GlowingButton';
 import { useIsMobile } from '@/hooks/useIsMobile';
 
-// Dynamically import heavy components - only load on desktop
+// Dynamically import heavy components - only load on desktop after delay
 const EarthGlobe = dynamic(() => import('@/components/home/EarthGlobe'), {
   ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-cyan-400"></div>
-    </div>
-  ),
+  loading: () => null,
 });
 
 const SpaceBackground = dynamic(() => import('@/components/home/SpaceBackground'), {
@@ -39,6 +36,17 @@ const SystemStatus = dynamic(() => import('@/components/home/LiveMetrics').then(
 export default function Home() {
   const router = useRouter();
   const isMobile = useIsMobile();
+  const [globeLoaded, setGlobeLoaded] = useState(false);
+
+  // Lazy load globe after page renders (3 second delay)
+  useEffect(() => {
+    if (!isMobile) {
+      const timer = setTimeout(() => {
+        setGlobeLoaded(true);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isMobile]);
 
   const handleGlobeClick = () => {
     router.push('/globe');
@@ -105,7 +113,7 @@ export default function Home() {
                   </div>
                 </div>
               ) : (
-                // Desktop: Full 3D globe
+                // Desktop: Lazy-loaded 3D globe
                 <div
                   className="relative w-[480px] h-[480px] lg:w-[550px] lg:h-[550px] cursor-pointer group"
                   onClick={handleGlobeClick}
@@ -114,10 +122,24 @@ export default function Home() {
                     className="absolute inset-0 border-2 border-cyan-400/40 rounded-full pointer-events-none"
                     style={{ boxShadow: '0 0 30px rgba(0, 217, 255, 0.15)' }}
                   />
-                  <DataParticles />
-                  <SystemStatus />
-                  <EarthGlobe interactive={false} autoRotate={true} />
-                  <LiveMetrics />
+
+                  {globeLoaded ? (
+                    // Full 3D globe after delay
+                    <>
+                      <DataParticles />
+                      <SystemStatus />
+                      <EarthGlobe interactive={false} autoRotate={true} />
+                      <LiveMetrics />
+                    </>
+                  ) : (
+                    // Placeholder while loading
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin mb-4 mx-auto" />
+                        <p className="text-xs text-gray-500">Loading globe...</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
