@@ -1,27 +1,29 @@
-import { technicalSkills } from '@/data/skills';
+import { technicalSkills } from "@/data/skills";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 /**
- * Skills Section - Organized by category, no proficiency levels
+ * Skills Section
+ *
+ * Displays technical skills organized by category.
+ * Uses SectionHeader component for consistent styling.
  */
 
 export default function Skills() {
   return (
     <section className="py-24 bg-[#0A0A0A]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-            Technical Stack
-          </h2>
-          <p className="text-gray-400">
-            Technologies I work with
-          </p>
-        </div>
+        <SectionHeader
+          title="Technical Stack"
+          subtitle="Technologies I work with"
+        />
 
         <div className="space-y-12">
           {/* Languages */}
           <div>
             <div className="flex items-center gap-4 mb-4">
-              <h3 className="text-sm font-semibold text-white uppercase tracking-wider">Languages</h3>
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+                Languages
+              </h3>
               <div className="flex-1 h-px bg-gray-800"></div>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -39,7 +41,9 @@ export default function Skills() {
           {/* Tools & Platforms */}
           <div>
             <div className="flex items-center gap-4 mb-4">
-              <h3 className="text-sm font-semibold text-white uppercase tracking-wider">Tools & Platforms</h3>
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+                Tools & Platforms
+              </h3>
               <div className="flex-1 h-px bg-gray-800"></div>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -57,7 +61,9 @@ export default function Skills() {
 
         {/* Domain Experience */}
         <div className="mt-16">
-          <h3 className="text-sm font-semibold text-white mb-6 text-center uppercase tracking-wider">Domain Experience</h3>
+          <h3 className="text-sm font-semibold text-white mb-6 text-center uppercase tracking-wider">
+            Domain Experience
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {technicalSkills.domains.map((domain) => (
               <div

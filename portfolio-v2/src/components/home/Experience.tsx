@@ -1,18 +1,18 @@
-import { experiences } from '@/data/experience';
+import { experiences } from "@/data/experience";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 /**
- * Experience Section - Light & Dark mode support
+ * Experience Section
+ *
+ * Displays professional experience timeline.
+ * Uses SectionHeader component for consistent styling.
  */
 
 export default function Experience() {
   return (
     <section className="py-24 bg-background dark:bg-[#0A0A0A]">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-text dark:text-white">
-            Experience
-          </h2>
-        </div>
+        <SectionHeader title="Experience" />
 
         <div className="space-y-6">
           {experiences.map((exp) => (

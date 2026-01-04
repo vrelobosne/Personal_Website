@@ -1,33 +1,39 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState, useCallback } from "react";
+import type { ContactFormData, FormStatus } from "@/types";
 
 /**
- * Contact Page - Sends emails via Web3Forms
+ * Contact Page
+ *
+ * Contact form that sends emails via Web3Forms.
+ * Includes accessibility improvements and proper form validation.
  */
 
 // Access key from environment variable (set in Vercel dashboard)
-const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '';
+const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "";
+
+// Initial form state
+const initialFormData: ContactFormData = {
+  name: "",
+  email: "",
+  company: "",
+  message: "",
+};
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
-
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
+  const [status, setStatus] = useState<FormStatus>("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('submitting');
+    setStatus("submitting");
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
@@ -40,20 +46,22 @@ export default function Contact() {
       const result = await response.json();
 
       if (result.success) {
-        setStatus('success');
-        setFormData({ name: '', email: '', company: '', message: '' });
+        setStatus("success");
+        setFormData({ name: "", email: "", company: "", message: "" });
       } else {
-        setStatus('error');
+        setStatus("error");
       }
     } catch {
-      setStatus('error');
+      setStatus("error");
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -66,14 +74,21 @@ export default function Contact() {
           </h1>
           <div className="h-px w-16 bg-white mx-auto mb-6"></div>
           <p className="text-gray-400">
-            Interested in discussing a project or collaboration? I'd love to hear from you.
+            Interested in discussing a project or collaboration? I'd love to
+            hear from you.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-[#111111] p-8 border border-gray-800">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-[#111111] p-8 border border-gray-800"
+        >
           {/* Name */}
           <div className="mb-6">
-            <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-white mb-2"
+            >
               Name *
             </label>
             <input
@@ -90,7 +105,10 @@ export default function Contact() {
 
           {/* Email */}
           <div className="mb-6">
-            <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-white mb-2"
+            >
               Email *
             </label>
             <input
@@ -107,7 +125,10 @@ export default function Contact() {
 
           {/* Company */}
           <div className="mb-6">
-            <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
+            <label
+              htmlFor="company"
+              className="block text-sm font-medium text-white mb-2"
+            >
               Company / Organization
             </label>
             <input
@@ -123,7 +144,10 @@ export default function Contact() {
 
           {/* Message */}
           <div className="mb-6">
-            <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-white mb-2"
+            >
               Message *
             </label>
             <textarea
@@ -138,31 +162,40 @@ export default function Contact() {
             />
           </div>
 
-          {/* Status Messages */}
-          {status === 'success' && (
-            <div className="mb-6 p-4 bg-green-900/20 border border-green-800 text-green-400 text-sm">
-              Thanks for reaching out! I'll get back to you soon.
-            </div>
-          )}
+          {/* Status Messages - with aria-live for screen readers */}
+          <div aria-live="polite" aria-atomic="true">
+            {status === "success" && (
+              <div
+                className="mb-6 p-4 bg-green-900/20 border border-green-800 text-green-400 text-sm"
+                role="alert"
+              >
+                Thanks for reaching out! I will get back to you soon.
+              </div>
+            )}
 
-          {status === 'error' && (
-            <div className="mb-6 p-4 bg-red-900/20 border border-red-800 text-red-400 text-sm">
-              Something went wrong. Please try again.
-            </div>
-          )}
+            {status === "error" && (
+              <div
+                className="mb-6 p-4 bg-red-900/20 border border-red-800 text-red-400 text-sm"
+                role="alert"
+              >
+                Something went wrong. Please try again.
+              </div>
+            )}
+          </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={status === 'submitting'}
+            disabled={status === "submitting"}
             className="w-full px-8 py-4 bg-white text-black font-semibold tracking-wide hover:bg-gray-200 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {status === 'submitting' ? 'Sending...' : 'Send Message'}
+            {status === "submitting" ? "Sending..." : "Send Message"}
           </button>
         </form>
 
         <p className="text-center text-xs text-gray-500 mt-6">
-          Your information is never shared and is used solely for responding to your inquiry.
+          Your information is never shared and is used solely for responding to
+          your inquiry.
         </p>
       </div>
     </div>
