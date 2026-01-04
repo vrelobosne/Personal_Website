@@ -1,44 +1,65 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
-import dynamic from 'next/dynamic';
-import Skills from '@/components/home/Skills';
-import Experience from '@/components/home/Experience';
-import Achievements from '@/components/home/Achievements';
-import Interests from '@/components/home/Interests';
-import ScrollReveal, { AnimatedCounter } from '@/components/ui/ScrollReveal';
-import GlowingButton from '@/components/ui/GlowingButton';
-import { useIsMobile } from '@/hooks/useIsMobile';
+import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
+import Skills from "@/components/home/Skills";
+import Experience from "@/components/home/Experience";
+import Achievements from "@/components/home/Achievements";
+import Interests from "@/components/home/Interests";
+import ScrollReveal, { AnimatedCounter } from "@/components/ui/ScrollReveal";
+import GlowingButton from "@/components/ui/GlowingButton";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import Sparkles, { SparklesCore } from "@/components/ui/Sparkles";
 
 // Dynamically import heavy components - only load on desktop after delay
-const EarthGlobe = dynamic(() => import('@/components/home/EarthGlobe'), {
+const EarthGlobe = dynamic(() => import("@/components/home/EarthGlobe"), {
   ssr: false,
   loading: () => null,
 });
 
-const SpaceBackground = dynamic(() => import('@/components/home/SpaceBackground'), {
-  ssr: false,
-});
+const SpaceBackground = dynamic(
+  () => import("@/components/home/SpaceBackground"),
+  {
+    ssr: false,
+  },
+);
 
-const LiveMetrics = dynamic(() => import('@/components/home/LiveMetrics').then(mod => ({ default: mod.default })), {
-  ssr: false,
-});
+const LiveMetrics = dynamic(
+  () =>
+    import("@/components/home/LiveMetrics").then((mod) => ({
+      default: mod.default,
+    })),
+  {
+    ssr: false,
+  },
+);
 
-const DataParticles = dynamic(() => import('@/components/home/LiveMetrics').then(mod => ({ default: mod.DataParticles })), {
-  ssr: false,
-});
+const DataParticles = dynamic(
+  () =>
+    import("@/components/home/LiveMetrics").then((mod) => ({
+      default: mod.DataParticles,
+    })),
+  {
+    ssr: false,
+  },
+);
 
-const SystemStatus = dynamic(() => import('@/components/home/LiveMetrics').then(mod => ({ default: mod.SystemStatus })), {
-  ssr: false,
-});
-
+const SystemStatus = dynamic(
+  () =>
+    import("@/components/home/LiveMetrics").then((mod) => ({
+      default: mod.SystemStatus,
+    })),
+  {
+    ssr: false,
+  },
+);
 
 export default function Home() {
   const router = useRouter();
   const isMobile = useIsMobile();
 
   const handleGlobeClick = () => {
-    router.push('/globe');
+    router.push("/globe");
   };
 
   return (
@@ -48,9 +69,19 @@ export default function Home() {
         {/* Space Background - desktop only */}
         {!isMobile && <SpaceBackground />}
 
+        {/* Sparkles Background - subtle, performant */}
+        {!isMobile && (
+          <SparklesCore
+            color="#00D9FF"
+            count={20}
+            minSize={1}
+            maxSize={2}
+            opacity={0.25}
+          />
+        )}
+
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-
             {/* Left - Typography (no Framer Motion on mobile) */}
             <div className="order-2 lg:order-1 z-10">
               <p className="text-sm tracking-[0.3em] uppercase text-gray-400 mb-6 animate-fade-in">
@@ -66,21 +97,21 @@ export default function Home() {
               </h1>
 
               <p className="text-base sm:text-lg text-gray-400 mb-10 max-w-md leading-relaxed animate-fade-in-delay">
-                Systems programming, internal tooling, and automation.
-                Building infrastructure that powers enterprise applications.
+                Systems programming, internal tooling, and automation. Building
+                infrastructure that powers enterprise applications.
               </p>
 
               <div className="animate-fade-in-delay-2">
-                <GlowingButton href="/contact">
-                  LET'S CONNECT
-                </GlowingButton>
+                <GlowingButton href="/contact">LET'S CONNECT</GlowingButton>
               </div>
 
               {/* Scroll indicator - desktop only */}
               {!isMobile && (
                 <div className="hidden lg:flex items-center gap-3 mt-20 text-gray-400">
                   <div className="w-8 h-[1px] bg-gray-600" />
-                  <span className="text-xs tracking-widest uppercase">Scroll down</span>
+                  <span className="text-xs tracking-widest uppercase">
+                    Scroll down
+                  </span>
                   <span className="text-cyan-400 animate-bounce">↓</span>
                 </div>
               )}
@@ -91,18 +122,22 @@ export default function Home() {
               <div
                 className={`relative cursor-pointer group ${
                   isMobile
-                    ? 'w-[280px] h-[280px] sm:w-[320px] sm:h-[320px]'
-                    : 'w-[480px] h-[480px] lg:w-[550px] lg:h-[550px]'
+                    ? "w-[280px] h-[280px] sm:w-[320px] sm:h-[320px]"
+                    : "w-[480px] h-[480px] lg:w-[550px] lg:h-[550px]"
                 }`}
                 onClick={handleGlobeClick}
               >
                 <div
                   className="absolute inset-0 border-2 border-cyan-400/40 rounded-full pointer-events-none"
-                  style={{ boxShadow: '0 0 30px rgba(0, 217, 255, 0.15)' }}
+                  style={{ boxShadow: "0 0 30px rgba(0, 217, 255, 0.15)" }}
                 />
                 {!isMobile && <DataParticles />}
                 {!isMobile && <SystemStatus />}
-                <EarthGlobe interactive={false} autoRotate={true} showMoon={!isMobile} />
+                <EarthGlobe
+                  interactive={false}
+                  autoRotate={true}
+                  showMoon={!isMobile}
+                />
                 {!isMobile && <LiveMetrics />}
               </div>
             </div>
@@ -119,33 +154,33 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-[#111111] border-y border-gray-800">
+      <section className="py-12 md:py-20 bg-[#111111] border-y border-gray-800">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-3 gap-8 text-center">
-            <ScrollReveal delay={0}>
-              <div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                  <AnimatedCounter value="2" suffix="+" duration={1.5} />
-                </div>
-                <div className="text-sm text-gray-400 uppercase tracking-wider">Years Experience</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center">
+            <div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
+                2+
               </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                  Energy
-                </div>
-                <div className="text-sm text-gray-400 uppercase tracking-wider">Sector</div>
+              <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider">
+                Years Experience
               </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                  Full Stack
-                </div>
-                <div className="text-sm text-gray-400 uppercase tracking-wider">Development</div>
+            </div>
+            <div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
+                Energy
               </div>
-            </ScrollReveal>
+              <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider">
+                Sector
+              </div>
+            </div>
+            <div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
+                Full Stack
+              </div>
+              <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider">
+                Development
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -172,21 +207,26 @@ export default function Home() {
         <Interests />
       </ScrollReveal>
 
-      {/* Final CTA Section */}
-      <section className="py-32 bg-gradient-to-b from-[#0A0A0A] to-[#0d1520] text-white relative overflow-hidden">
+      {/* Final CTA Section with Mesh Gradient */}
+      <section className="py-32 bg-gradient-to-b from-[#0A0A0A] to-[#0d1520] text-white relative overflow-hidden mesh-gradient">
         {/* Animated background grid */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(rgba(0, 217, 255, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 217, 255, 0.3) 1px, transparent 1px)',
-            backgroundSize: '50px 50px',
-          }} />
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(0, 217, 255, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 217, 255, 0.3) 1px, transparent 1px)",
+              backgroundSize: "50px 50px",
+            }}
+          />
         </div>
 
         {/* Central glow - static on mobile */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
           style={{
-            background: 'radial-gradient(circle, rgba(0, 217, 255, 0.15) 0%, transparent 70%)',
+            background:
+              "radial-gradient(circle, rgba(0, 217, 255, 0.15) 0%, transparent 70%)",
           }}
         />
 
@@ -198,7 +238,8 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Always happy to chat about interesting projects, technical challenges, or potential collaborations.
+              Always happy to chat about interesting projects, technical
+              challenges, or potential collaborations.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>

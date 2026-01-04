@@ -1,11 +1,13 @@
+"use client";
+
 import { experiences } from "@/data/experience";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { motion } from "framer-motion";
 
 /**
  * Experience Section
  *
- * Displays professional experience timeline.
- * Uses SectionHeader component for consistent styling.
+ * Clean timeline with subtle animations.
  */
 
 export default function Experience() {
@@ -15,10 +17,14 @@ export default function Experience() {
         <SectionHeader title="Experience" />
 
         <div className="space-y-6">
-          {experiences.map((exp) => (
-            <div
+          {experiences.map((exp, index) => (
+            <motion.div
               key={exp.id}
-              className="p-8 bg-white dark:bg-[#111111] border border-border dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-300 dark:hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="p-8 bg-white dark:bg-[#111111] border border-border dark:border-gray-800 hover:border-black dark:hover:border-cyan-400/50 transition-all duration-300 dark:hover:shadow-[0_0_30px_rgba(0,217,255,0.1)]"
             >
               <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
                 <div>
@@ -29,11 +35,11 @@ export default function Experience() {
                     {exp.industry}
                   </p>
                 </div>
-                <div className="text-sm text-textMuted dark:text-gray-500 font-medium">
+                <div className="text-sm text-cyan-400 font-medium whitespace-nowrap">
                   {exp.period}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

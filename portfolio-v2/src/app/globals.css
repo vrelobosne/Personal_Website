@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -10,48 +10,53 @@
  */
 
 @font-face {
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/playfair-display-v30-latin-regular.woff2') format('woff2'),
-    url('/fonts/playfair-display-v30-latin-regular.woff') format('woff');
+  src:
+    url("/fonts/playfair-display-v30-latin-regular.woff2") format("woff2"),
+    url("/fonts/playfair-display-v30-latin-regular.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('/fonts/playfair-display-v30-latin-500.woff2') format('woff2'),
-    url('/fonts/playfair-display-v30-latin-500.woff') format('woff');
+  src:
+    url("/fonts/playfair-display-v30-latin-500.woff2") format("woff2"),
+    url("/fonts/playfair-display-v30-latin-500.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/playfair-display-v30-latin-700.woff2') format('woff2'),
-    url('/fonts/playfair-display-v30-latin-700.woff') format('woff');
+  src:
+    url("/fonts/playfair-display-v30-latin-700.woff2") format("woff2"),
+    url("/fonts/playfair-display-v30-latin-700.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-style: normal;
   font-weight: 800;
   font-display: swap;
-  src: url('/fonts/playfair-display-v30-latin-800.woff2') format('woff2'),
-    url('/fonts/playfair-display-v30-latin-800.woff') format('woff');
+  src:
+    url("/fonts/playfair-display-v30-latin-800.woff2") format("woff2"),
+    url("/fonts/playfair-display-v30-latin-800.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url('/fonts/playfair-display-v30-latin-900.woff2') format('woff2'),
-    url('/fonts/playfair-display-v30-latin-900.woff') format('woff');
+  src:
+    url("/fonts/playfair-display-v30-latin-900.woff2") format("woff2"),
+    url("/fonts/playfair-display-v30-latin-900.woff") format("woff");
 }
 
 /**
@@ -69,17 +74,21 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
   color: #000000;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Dark mode styles */
 html.dark body {
-  color: #FFFFFF;
-  background-color: #0A0A0A;
+  color: #ffffff;
+  background-color: #0a0a0a;
 }
 
 html.dark {
@@ -92,15 +101,15 @@ html.dark {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F8F8F8;
+  background: #f8f8f8;
 }
 
 html.dark ::-webkit-scrollbar-track {
-  background: #1A1A1A;
+  background: #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CCCCCC;
+  background: #cccccc;
   border-radius: 4px;
 }
 
@@ -118,7 +127,8 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 
 /* Star twinkle animation - GPU accelerated CSS */
 @keyframes star-twinkle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: scale(1);
   }
@@ -135,7 +145,8 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 
 /* Astronaut floating animation */
 @keyframes astronaut-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(0.5) translate(0, 0) rotate(0deg);
   }
   50% {
@@ -153,7 +164,7 @@ html.dark body {
 }
 
 html.dark body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -183,13 +194,25 @@ html.dark body::before {
 
 /* Lightweight CSS animations for mobile (no JS) */
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slide-in {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .animate-fade-in {
@@ -210,9 +233,76 @@ html.dark body::before {
   opacity: 0;
 }
 
+/* Mesh Gradient Animations */
+@keyframes mesh-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.mesh-gradient {
+  background: linear-gradient(
+    -45deg,
+    rgba(0, 217, 255, 0.1),
+    rgba(59, 130, 246, 0.1),
+    rgba(139, 92, 246, 0.1),
+    rgba(0, 217, 255, 0.1)
+  );
+  background-size: 400% 400%;
+  animation: mesh-gradient 15s ease infinite;
+}
+
+.mesh-gradient-subtle {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 217, 255, 0.05) 0%,
+    transparent 50%,
+    rgba(139, 92, 246, 0.05) 100%
+  );
+}
+
+/* Gradient orb for section backgrounds */
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.gradient-orb-cyan {
+  background: radial-gradient(
+    circle,
+    rgba(0, 217, 255, 0.15) 0%,
+    transparent 70%
+  );
+}
+
+.gradient-orb-purple {
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.15) 0%,
+    transparent 70%
+  );
+}
+
+/* Glow utilities */
+.glow-cyan {
+  box-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
+}
+
+.glow-cyan-hover:hover {
+  box-shadow: 0 0 40px rgba(0, 217, 255, 0.3);
+}
+
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
