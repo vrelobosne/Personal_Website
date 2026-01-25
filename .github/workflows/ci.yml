@@ -16,22 +16,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
-          cache-dependency-path: portfolio-v2/package-lock.json
 
       - name: Install dependencies
-        working-directory: ./portfolio-v2
         run: npm ci
 
       - name: Lint
-        working-directory: ./portfolio-v2
         run: npm run lint
 
       - name: Type check
-        working-directory: ./portfolio-v2
         run: npx tsc --noEmit
 
       - name: Build
-        working-directory: ./portfolio-v2
         run: npm run build

@@ -26,18 +26,17 @@ Interactive portfolio website featuring 3D visualizations and modern web animati
 ## Architecture
 
 ```
-portfolio-v2/
-├── src/
-│   ├── app/           # Next.js App Router pages
-│   ├── components/    # React components
-│   │   ├── home/      # Homepage sections (Globe, Skills, Experience)
-│   │   ├── layout/    # Navbar, Footer
-│   │   └── ui/        # Reusable UI components
-│   ├── data/          # Content data (projects, skills, experience)
-│   ├── hooks/         # Custom React hooks
-│   ├── lib/           # Utility functions
-│   └── types/         # TypeScript interfaces
-└── public/            # Static assets
+src/
+├── app/           # Next.js App Router pages
+├── components/    # React components
+│   ├── home/      # Homepage sections (Globe, Skills, Experience)
+│   ├── layout/    # Navbar, Footer
+│   └── ui/        # Reusable UI components
+├── data/          # Content data (projects, skills, experience)
+├── hooks/         # Custom React hooks
+├── lib/           # Utility functions
+└── types/         # TypeScript interfaces
+public/            # Static assets
 ```
 
 ## Performance
@@ -49,10 +48,9 @@ portfolio-v2/
 
 ## Local Development
 
-**Requirements:** Node.js 20+
+**Requirements:** Node.js 22+
 
 ```bash
-cd portfolio-v2
 npm install
 npm run dev
 ```
