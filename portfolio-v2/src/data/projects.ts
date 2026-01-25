@@ -10,23 +10,13 @@ import { Project } from '@/types';
 
 export const projects: Project[] = [
   {
-    id: 'podcast-editor',
-    title: 'PodcastEditor',
-    description: 'Audio editing tool designed for podcast creators to streamline their editing workflow.',
-    image: '/images/Podcast Stock photo.png',
-    githubUrl: 'https://github.com/bachvtr/PodcastEditor',
-    tags: ['Python', 'Audio Processing']
+    id: 'portfolio-website',
+    title: 'Portfolio Website',
+    description: 'Interactive portfolio with 3D Earth visualization, voxel rendering, and power grid animations built with Three.js and React Three Fiber.',
+    image: '/images/portfolio-preview.png',
+    githubUrl: 'https://github.com/vrelobosne/Personal_Website',
+    tags: ['Next.js', 'Three.js', 'TypeScript', 'React']
   },
-  // Add more projects here by copying the structure above
-  // Example:
-  // {
-  //   id: 'my-new-project',
-  //   title: 'Project Name',
-  //   description: 'Brief description of what this project does',
-  //   image: '/images/project-screenshot.png',
-  //   githubUrl: 'https://github.com/yourusername/project',
-  //   tags: ['React', 'TypeScript', 'Next.js']
-  // }
 ];
 
 // Helper function to get a single project by ID
