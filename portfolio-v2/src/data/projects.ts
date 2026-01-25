@@ -13,7 +13,7 @@ export const projects: Project[] = [
     id: 'portfolio-website',
     title: 'Portfolio Website',
     description: 'Interactive portfolio with 3D Earth visualization, voxel rendering, and power grid animations built with Three.js and React Three Fiber.',
-    image: '/images/portfolio-preview.png',
+    image: '/images/SM_Landingpage.png',
     githubUrl: 'https://github.com/vrelobosne/Personal_Website',
     tags: ['Next.js', 'Three.js', 'TypeScript', 'React']
   },
