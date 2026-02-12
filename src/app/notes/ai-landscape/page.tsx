@@ -58,6 +58,52 @@ function PullQuote({ children }: { children: React.ReactNode }) {
   );
 }
 
+function TweetEmbed({
+  name,
+  handle,
+  date,
+  href,
+  children,
+}: {
+  name: string;
+  handle: string;
+  date: string;
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block my-8 p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors group"
+    >
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-sm">
+            {name.charAt(0)}
+          </div>
+          <div>
+            <div className="text-white font-semibold text-sm">{name}</div>
+            <div className="text-gray-500 text-xs">@{handle}</div>
+          </div>
+        </div>
+        <svg
+          viewBox="0 0 24 24"
+          className="w-5 h-5 text-gray-500 group-hover:text-white/60 transition-colors"
+          fill="currentColor"
+        >
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+      </div>
+      <div className="text-gray-300 text-[15px] leading-relaxed">
+        {children}
+      </div>
+      <div className="text-gray-600 text-xs mt-3">{date}</div>
+    </a>
+  );
+}
+
 function SectionHeading({
   number,
   children,
@@ -115,8 +161,8 @@ export default function AILandscapePage() {
       <div className="relative w-full h-[40vh] sm:h-[50vh] overflow-hidden mb-12">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3_deep-think_meta_dark_Fm70Cou.width-1300.png"
-          alt="Gemini 3 Deep Think announcement banner"
+          src="https://static-assets.codecademy.com/introduction-to-claude-code/selecting-text.png"
+          alt="Claude Code terminal interface"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/60 to-transparent" />
@@ -125,12 +171,12 @@ export default function AILandscapePage() {
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3 leading-tight"
             style={{ fontFamily: '"Playfair Display", serif' }}
           >
-            The AI Landscape
+            The Current AI Landscape
           </h1>
           <div className="flex items-center gap-3 text-gray-400 text-sm">
             <span>By Dino Handzic</span>
             <span className="text-gray-600">|</span>
-            <span>February 12, 2026</span>
+            <span>As of February 12, 2026</span>
           </div>
         </div>
       </div>
@@ -138,39 +184,52 @@ export default function AILandscapePage() {
       <article className="max-w-3xl mx-auto px-6 sm:px-8">
         {/* TL;DR Box */}
         <div className="mb-12 p-6 rounded-xl bg-white/[0.03] border border-white/10">
-          <h3
-            className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-4"
-          >
+          <h3 className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-4">
             Key Takeaways
           </h3>
           <ol className="space-y-2 text-[15px] text-gray-300">
             <li className="flex gap-3">
               <span className="text-blue-400 font-semibold shrink-0">1.</span>
-              AI can now complete tasks autonomously that would take a human professional over 6 hours — up from 9 seconds in 2020.
+              AI can now complete tasks autonomously that would take a human
+              professional over 6 hours — up from 9 seconds in 2020.
             </li>
             <li className="flex gap-3">
               <span className="text-blue-400 font-semibold shrink-0">2.</span>
-              Google DeepMind&apos;s Gemini Deep Think is solving open math problems and producing publishable research — though 68.5% of attempts still fail.
+              Google DeepMind&apos;s Gemini Deep Think is solving open math
+              problems and producing publishable research — though 68.5% of
+              attempts still fail.
             </li>
             <li className="flex gap-3">
               <span className="text-blue-400 font-semibold shrink-0">3.</span>
-              OpenAI&apos;s latest model helped build itself — and a departing xAI co-founder predicts recursive self-improvement within 12 months.
+              OpenAI&apos;s latest model helped build itself — and a departing
+              xAI co-founder predicts recursive self-improvement within 12
+              months.
             </li>
             <li className="flex gap-3">
               <span className="text-blue-400 font-semibold shrink-0">4.</span>
-              Safety researchers are leaving Anthropic and OpenAI in waves, warning that &quot;safety culture has taken a backseat to shiny products.&quot;
+              Safety researchers are leaving Anthropic and OpenAI in waves,
+              warning that &quot;safety culture has taken a backseat to shiny
+              products.&quot;
             </li>
             <li className="flex gap-3">
               <span className="text-blue-400 font-semibold shrink-0">5.</span>
-              GPT-5 autonomously ran 36,000 lab experiments, cutting protein synthesis costs by 40% — proposing combinations humans hadn&apos;t tried.
+              GPT-5 autonomously ran 36,000 lab experiments, cutting protein
+              synthesis costs by 40% — proposing combinations humans hadn&apos;t
+              tried.
             </li>
           </ol>
         </div>
 
         {/* Intro */}
         <div className="text-lg leading-relaxed space-y-6">
-          <p className="first-letter:text-[3.5rem] first-letter:font-bold first-letter:text-white first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-[0.8]" style={{ fontFamily: 'inherit' }}>
-            <span style={{ fontFamily: '"Playfair Display", serif' }} className="first-letter:font-bold" />
+          <p
+            className="first-letter:text-[3.5rem] first-letter:font-bold first-letter:text-white first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-[0.8]"
+            style={{ fontFamily: "inherit" }}
+          >
+            <span
+              style={{ fontFamily: '"Playfair Display", serif' }}
+              className="first-letter:font-bold"
+            />
             The AI landscape today is dominated by a handful of companies —
             OpenAI (ChatGPT), Anthropic (Claude), Google DeepMind (Gemini), Meta
             (Llama), and Elon Musk&apos;s xAI (Grok) in the US, plus
@@ -192,27 +251,35 @@ export default function AILandscapePage() {
             AI Can Now Work Autonomously for 6+ Hours
           </SectionHeading>
 
-          <p>
-            A nonprofit called METR<Footnote n={2} /> has developed a metric
-            for measuring how long AI can work independently on professional-level
-            tasks — essentially, how complex of a task can AI complete alone,
-            measured by how long that same task would take a human professional.
-          </p>
-
-          <p>
-            The latest result is staggering: GPT-5.2 can now complete tasks that
-            would take a human roughly 6.6 hours. For context, in 2020 that
-            number was 9 seconds. By 2023 it had reached about 4 minutes, and by
-            late 2024 roughly 40 minutes. Capabilities are doubling approximately
-            every 4–5 months.
-          </p>
-
-          <p>
-            Separately, Anthropic&apos;s Claude Opus 4.6<Footnote n={3} /> was
-            tested managing a 50-person organization across 6 code
-            repositories — closing issues, delegating tasks, and escalating to
-            humans when appropriate. The chart below captures this trajectory.
-          </p>
+          <ul className="list-disc list-outside ml-5 space-y-3">
+            <li>
+              A nonprofit called METR
+              <Footnote n={2} /> measures how long AI can work independently on
+              professional-level tasks.
+            </li>
+            <li>
+              Their metric: how complex of a task can AI complete alone,
+              measured by how long that task would take a human professional.
+            </li>
+            <li>
+              Latest result: GPT-5.2 can complete tasks that would take a human
+              ~6.6 hours.
+            </li>
+            <li>
+              For context: in 2020 it was 9 seconds, in 2023 about 4 minutes,
+              late 2024 about 40 minutes.
+            </li>
+            <li>
+              Separately, Claude Opus 4.6
+              <Footnote n={3} /> was tested managing a 50-person organization
+              across 6 code repositories — closing issues, delegating tasks, and
+              escalating to humans when appropriate.
+            </li>
+            <li>
+              The chart below shows this trajectory — capabilities are roughly
+              doubling every 4–5 months.
+            </li>
+          </ul>
 
           <ArticleImage
             src="/images/metr-time-horizons.png"
@@ -221,7 +288,8 @@ export default function AILandscapePage() {
           />
 
           <PullQuote>
-            From 9 seconds to 6.6 hours in five years — and the curve is still accelerating.
+            From 9 seconds to 6.6 hours in five years — and the curve is still
+            accelerating.
           </PullQuote>
 
           {/* Section 2 */}
@@ -229,32 +297,40 @@ export default function AILandscapePage() {
             AI Is Solving PhD-Level Math and Generating Publishable Research
           </SectionHeading>
 
-          <p>
-            Google DeepMind announced Gemini Deep Think<Footnote n={4} /> — an
-            AI research agent that autonomously works on open problems in
-            mathematics, physics, and computer science. The system is built
-            around <strong className="text-white">Aletheia</strong>, an agentic
-            framework where Gemini Deep Think explores conjectures, generates
-            proofs, verifies its reasoning, and iterates — all with minimal
-            human oversight.
-          </p>
-
-          <p>
-            After achieving a gold medal at the 2025 International Math Olympiad
-            (solving 5 of 6 problems within the 4.5-hour time limit), updated
-            versions now score ~92% on advanced proof benchmarks. When directed
-            at 700 unsolved mathematical conjectures, the system produced 4
-            novel solutions — one of which became a published research paper. In
-            another case, the AI generated a proof that the original human
-            researchers preferred over their own, replacing their version in the
-            final publication.
-          </p>
-
-          <p>
-            The caveat is significant: on open research problems, 68.5% of
-            responses were still fundamentally flawed. Capable, but far from
-            reliable.
-          </p>
+          <ul className="list-disc list-outside ml-5 space-y-3">
+            <li>
+              Google DeepMind announced Gemini Deep Think
+              <Footnote n={4} /> — an AI research agent that autonomously works
+              on open problems in math, physics, and computer science.
+            </li>
+            <li>
+              The system is built around{" "}
+              <strong className="text-white">Aletheia</strong>, an agentic
+              framework where Gemini Deep Think explores conjectures, generates
+              proofs, verifies its reasoning, and iterates — all with minimal
+              human oversight.
+            </li>
+            <li>
+              After achieving a gold medal at the 2025 International Math
+              Olympiad (5 of 6 problems within the 4.5-hour time limit), updated
+              versions now score ~92% on advanced proof benchmarks.
+            </li>
+            <li>
+              When directed at 700 unsolved mathematical conjectures, it
+              produced 4 novel solutions — one became a published research
+              paper.
+            </li>
+            <li>
+              In another case, the AI generated a proof that the original human
+              researchers preferred over their own, replacing their version in
+              the final publication.
+            </li>
+            <li>
+              <strong className="text-white">Caveat:</strong> on open research
+              problems, 68.5% of responses were still fundamentally flawed —
+              capable but far from reliable.
+            </li>
+          </ul>
 
           <ArticleImage
             src="https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/DeepThink-maths-science-discovery__figure-01-Aletheia__dark_MQtmOaf.svg"
@@ -262,42 +338,50 @@ export default function AILandscapePage() {
             caption="The Aletheia framework: Gemini Deep Think's autonomous pipeline for mathematical discovery. Source: Google DeepMind"
           />
 
-          <ArticleImage
-            src="https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/DeepThink-maths-science-discovery__figure-01-chart__dark.svg"
-            alt="IMO-ProofBench results showing Gemini Deep Think achieving ~92% on advanced proof benchmarks"
-            caption="IMO-ProofBench performance: from gold medal to ~92% on advanced proofs. Source: Google DeepMind"
-          />
-
           {/* Section 3 */}
           <SectionHeading number={3}>
             AI Is Starting to Improve Itself
           </SectionHeading>
 
-          <p>
-            OpenAI released GPT-5.3-Codex, which the company described as
-            &quot;the first model that was instrumental in creating
-            itself&quot;<Footnote n={5} /> — early versions debugged their own
-            training process and managed their own deployment. The model operates
-            25% faster than its predecessor while achieving state-of-the-art
-            performance with reduced computing resources. CEO Sam Altman has set
-            a target of an automated AI research intern by September 2026, and a
-            &quot;true automated AI researcher by March of 2028.&quot;
-          </p>
+          <ul className="list-disc list-outside ml-5 space-y-3">
+            <li>
+              OpenAI released GPT-5.3-Codex, described as <Footnote n={5} />{" "}
+              &quot;the first model that was instrumental in creating
+              itself&quot; — early versions debugged their own training process
+              and managed their own deployment. The model operates 25% faster
+              than its predecessor while achieving state-of-the-art performance
+              with reduced computing resources.
+            </li>
+            <li>
+              CEO Sam Altman aims for an automated AI research intern by
+              September 2026 and a &quot;true automated AI researcher by March
+              of 2028.&quot;
+            </li>
+            <li>
+              A departing xAI co-founder
+              <Footnote n={6} /> (half the founding team has now left — Jimmy Ba
+              and Tony Wu both departed within two days of each other, following
+              SpaceX&apos;s acquisition of xAI) predicts &quot;recursive
+              self-improvement loops will go live within 12 months.&quot;
+            </li>
+            <li>
+              Recursive self-improvement means AI systems that can modify and
+              improve their own design, with each improvement making the next
+              one easier — creating an accelerating feedback loop.
+            </li>
+          </ul>
 
-          <p>
-            Meanwhile, Elon Musk&apos;s xAI is hemorrhaging talent. Co-founders
-            Jimmy Ba and Tony Wu both departed within two days of each
-            other<Footnote n={6} /> — half the founding team gone — following
-            SpaceX&apos;s acquisition of xAI. A departing co-founder predicts
-            &quot;recursive self-improvement loops will go live within 12
-            months.&quot;
-          </p>
-
-          <p>
-            Recursive self-improvement means AI systems that can modify and
-            improve their own design, with each improvement making the next one
-            easier — creating an accelerating feedback loop.
-          </p>
+          <TweetEmbed
+            name="Sam Altman"
+            handle="sama"
+            date="Oct 28, 2025"
+            href="https://x.com/sama/status/1983584366547829073"
+          >
+            Yesterday we did a livestream. TL;DR: We have set internal goals of
+            having an automated AI research intern by September of 2026 running
+            on hundreds of thousands of GPUs, and a true automated AI researcher
+            by March of 2028.
+          </TweetEmbed>
 
           <ArticleImage
             src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/rockcms/2025-10/251001-open-ai-vl-119p-115a9c.jpg"
@@ -305,41 +389,68 @@ export default function AILandscapePage() {
             caption="OpenAI's GPT-5.3-Codex: the first model that helped build itself. Source: NBC News"
           />
 
-          <PullQuote>
-            &quot;Recursive self-improvement loops will go live within 12 months.&quot;
-          </PullQuote>
+          <TweetEmbed
+            name="Jimmy Ba"
+            handle="jimmybajimmyba"
+            date="Feb 10, 2026"
+            href="https://x.com/jimmybajimmyba/status/2021374875793801447"
+          >
+            Last day at xAI. xAI&apos;s mission is push humanity up the
+            Kardashev tech tree. Grateful to have helped cofound at the start...
+            Recursive self improvement loops likely go live in the next 12mo.
+            2026 is gonna be insane and likely the busiest (and most
+            consequential) year for the future of our species.
+          </TweetEmbed>
 
           {/* Section 4 */}
           <SectionHeading number={4}>
             The People Hired to Keep AI Safe Are Quitting
           </SectionHeading>
 
-          <p>
-            Anthropic&apos;s head of AI safety,{" "}
-            <strong className="text-white">Mrinank Sharma</strong>, resigned
-            publicly<Footnote n={7} />, warning &quot;the world is in
-            peril.&quot; Sharma, who holds a PhD in Machine Learning from Oxford,
-            led Anthropic&apos;s Safeguards Research Team since 2025, building
-            defenses against AI misuse — including work on bioweapon risk
-            prevention.
-          </p>
+          <ul className="list-disc list-outside ml-5 space-y-3">
+            <li>
+              Anthropic&apos;s head of AI safety,{" "}
+              <strong className="text-white">Mrinank Sharma</strong>, resigned
+              publicly
+              <Footnote n={7} />, warning &quot;the world is in peril.&quot;
+              Sharma, who holds a PhD in Machine Learning from Oxford, led
+              Anthropic&apos;s Safeguards Research Team since 2025, building
+              defenses against AI misuse including work on bioweapon risk
+              prevention.
+            </li>
+            <li>
+              In his resignation letter, he wrote: &quot;Throughout my time
+              here, I&apos;ve repeatedly seen how hard it is to truly let our
+              values govern our actions.&quot;
+            </li>
+            <li>
+              He is leaving the technology industry entirely — not joining a
+              competitor. His plan is to pursue a poetry degree and &quot;devote
+              myself to the practice of courageous speech.&quot;
+            </li>
+            <li>
+              This is part of a broader pattern
+              <Footnote n={8} /> — multiple safety researchers have left both
+              Anthropic and OpenAI in recent months, with one stating
+              &quot;safety culture has taken a backseat to shiny products.&quot;
+              OpenAI disbanded its Mission Alignment team after just 16 months,
+              and fired safety executive Ryan Beiermeister after he opposed the
+              rollout of adult content on ChatGPT.
+            </li>
+          </ul>
 
-          <p>
-            In his resignation letter, he wrote: &quot;Throughout my time here,
-            I&apos;ve repeatedly seen how hard it is to truly let our values
-            govern our actions.&quot; He is leaving the technology industry
-            entirely — not joining a competitor. His plan is to pursue a poetry
-            degree and &quot;devote myself to the practice of courageous
-            speech.&quot;
-          </p>
-
-          <p>
-            This is part of a broader pattern<Footnote n={8} /> — multiple
-            safety researchers have left both Anthropic and OpenAI in recent
-            months. OpenAI disbanded its Mission Alignment team after just 16
-            months, and fired safety executive Ryan Beiermeister after he opposed
-            the rollout of adult content on ChatGPT.
-          </p>
+          <TweetEmbed
+            name="Mrinank Sharma"
+            handle="MrinankSharma"
+            date="Feb 9, 2026"
+            href="https://x.com/MrinankSharma/status/2020881722003583421"
+          >
+            The world is in peril. And not just from AI, or bioweapons, but from
+            a whole series of interconnected crises unfolding in this very
+            moment. We appear to be approaching a threshold where our wisdom
+            must grow in equal measure to our capacity to affect the world, lest
+            we face the consequences.
+          </TweetEmbed>
 
           <ArticleImage
             src="https://americanbazaaronline.com/wp-content/uploads/2026/02/Mrinank-Sharma.png"
@@ -347,37 +458,36 @@ export default function AILandscapePage() {
             caption="Mrinank Sharma resigned from Anthropic warning 'the world is in peril.' Source: American Bazaar"
           />
 
-          <PullQuote>
-            &quot;Safety culture has taken a backseat to shiny products.&quot;
-          </PullQuote>
-
           {/* Section 5 */}
           <SectionHeading number={5}>
             AI Ran Its Own Lab Experiments
           </SectionHeading>
 
-          <p>
-            OpenAI connected GPT-5 to a robotic wet
-            lab<Footnote n={9} /> operated by Ginkgo Bioworks. The AI
-            autonomously designed 36,000 protein synthesis experiments, submitted
-            them to robotic systems, analyzed results, and decided what to try
-            next — with minimal human involvement.
-          </p>
-
-          <p>
-            The result: a 40% reduction in cell-free protein production cost,
-            from $698 per gram to $422 per gram for sfGFP. The AI proposed
-            reagent combinations that human researchers hadn&apos;t previously
-            tested — some of which anticipated findings from papers it
-            hadn&apos;t been given access to.
-          </p>
-
-          <p>
-            Cell-free protein synthesis is used in therapeutic protein
-            production, vaccine development, antimicrobial peptide research, and
-            diagnostics. This isn&apos;t a toy demo — it&apos;s a cost
-            reduction with real implications for drug development pipelines.
-          </p>
+          <ul className="list-disc list-outside ml-5 space-y-3">
+            <li>
+              OpenAI connected their AI to a robotic wet lab
+              <Footnote n={9} />.
+            </li>
+            <li>
+              The AI autonomously designed 36,000 protein synthesis experiments,
+              submitted them to robotic systems, analyzed results, and decided
+              what to try next — with minimal human involvement.
+            </li>
+            <li>
+              Result: 40% reduction in cell-free protein production cost
+              ($698/gram → $422/gram for sfGFP).
+            </li>
+            <li>
+              The AI proposed reagent combinations that human researchers
+              hadn&apos;t previously tested — some of which anticipated findings
+              from papers it hadn&apos;t been given access to.
+            </li>
+            <li>
+              Cell-free protein synthesis is used in therapeutic protein
+              production, vaccine development, antimicrobial peptide research,
+              and diagnostics.
+            </li>
+          </ul>
 
           <ArticleImage
             src="https://www.rdworldonline.com/wp-content/uploads/2026/02/GinkosLab.jpg"
@@ -388,14 +498,14 @@ export default function AILandscapePage() {
 
         {/* Sources / Footnotes */}
         <div className="mt-16 pt-8 border-t border-gray-800">
-          <h3
-            className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-6"
-          >
+          <h3 className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-6">
             Sources
           </h3>
           <ol className="space-y-3 text-sm text-gray-500">
             <li id="fn-1" className="flex gap-2">
-              <a href="#ref-1" className="text-blue-400/60 shrink-0">[1]</a>
+              <a href="#ref-1" className="text-blue-400/60 shrink-0">
+                [1]
+              </a>
               <span>
                 CNN —{" "}
                 <a
@@ -409,7 +519,9 @@ export default function AILandscapePage() {
               </span>
             </li>
             <li id="fn-2" className="flex gap-2">
-              <a href="#ref-2" className="text-blue-400/60 shrink-0">[2]</a>
+              <a href="#ref-2" className="text-blue-400/60 shrink-0">
+                [2]
+              </a>
               <span>
                 METR —{" "}
                 <a
@@ -423,7 +535,9 @@ export default function AILandscapePage() {
               </span>
             </li>
             <li id="fn-3" className="flex gap-2">
-              <a href="#ref-3" className="text-blue-400/60 shrink-0">[3]</a>
+              <a href="#ref-3" className="text-blue-400/60 shrink-0">
+                [3]
+              </a>
               <span>
                 Anthropic —{" "}
                 <a
@@ -437,7 +551,9 @@ export default function AILandscapePage() {
               </span>
             </li>
             <li id="fn-4" className="flex gap-2">
-              <a href="#ref-4" className="text-blue-400/60 shrink-0">[4]</a>
+              <a href="#ref-4" className="text-blue-400/60 shrink-0">
+                [4]
+              </a>
               <span>
                 Google DeepMind —{" "}
                 <a
@@ -446,12 +562,15 @@ export default function AILandscapePage() {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-gray-300 underline"
                 >
-                  Accelerating Mathematical and Scientific Discovery with Gemini Deep Think
+                  Accelerating Mathematical and Scientific Discovery with Gemini
+                  Deep Think
                 </a>
               </span>
             </li>
             <li id="fn-5" className="flex gap-2">
-              <a href="#ref-5" className="text-blue-400/60 shrink-0">[5]</a>
+              <a href="#ref-5" className="text-blue-400/60 shrink-0">
+                [5]
+              </a>
               <span>
                 NBC News —{" "}
                 <a
@@ -465,7 +584,9 @@ export default function AILandscapePage() {
               </span>
             </li>
             <li id="fn-6" className="flex gap-2">
-              <a href="#ref-6" className="text-blue-400/60 shrink-0">[6]</a>
+              <a href="#ref-6" className="text-blue-400/60 shrink-0">
+                [6]
+              </a>
               <span>
                 CNBC —{" "}
                 <a
@@ -474,12 +595,15 @@ export default function AILandscapePage() {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-gray-300 underline"
                 >
-                  Musk&apos;s xAI loses second co-founder in two days as Jimmy Ba departs
+                  Musk&apos;s xAI loses second co-founder in two days as Jimmy
+                  Ba departs
                 </a>
               </span>
             </li>
             <li id="fn-7" className="flex gap-2">
-              <a href="#ref-7" className="text-blue-400/60 shrink-0">[7]</a>
+              <a href="#ref-7" className="text-blue-400/60 shrink-0">
+                [7]
+              </a>
               <span>
                 Forbes —{" "}
                 <a
@@ -488,12 +612,15 @@ export default function AILandscapePage() {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-gray-300 underline"
                 >
-                  Anthropic AI safety researcher warns of world in peril in resignation
+                  Anthropic AI safety researcher warns of world in peril in
+                  resignation
                 </a>
               </span>
             </li>
             <li id="fn-8" className="flex gap-2">
-              <a href="#ref-8" className="text-blue-400/60 shrink-0">[8]</a>
+              <a href="#ref-8" className="text-blue-400/60 shrink-0">
+                [8]
+              </a>
               <span>
                 CNN —{" "}
                 <a
@@ -502,12 +629,15 @@ export default function AILandscapePage() {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-gray-300 underline"
                 >
-                  AI researchers are sounding the alarm on their way out the door
+                  AI researchers are sounding the alarm on their way out the
+                  door
                 </a>
               </span>
             </li>
             <li id="fn-9" className="flex gap-2">
-              <a href="#ref-9" className="text-blue-400/60 shrink-0">[9]</a>
+              <a href="#ref-9" className="text-blue-400/60 shrink-0">
+                [9]
+              </a>
               <span>
                 OpenAI —{" "}
                 <a
