@@ -63,7 +63,7 @@ function EmbeddedTweet({ id }: { id: string }) {
   return (
     <div
       data-theme="dark"
-      className="my-8 [&_[data-theme=dark]]:!bg-transparent"
+      className="my-8 [&_[data-theme=dark]]:!bg-transparent [&_[data-testid=tweetText]]:![-webkit-line-clamp:unset] [&_[data-testid=tweetText]]:!line-clamp-none [&_[data-testid=tweetText]]:!max-h-none [&_[data-testid=tweetText]]:!overflow-visible"
     >
       <Tweet id={id} />
     </div>
@@ -337,6 +337,8 @@ export default function AILandscapePage() {
             </li>
           </ul>
 
+          <EmbeddedTweet id="2021374875793801447" />
+
           <ArticleImage
             src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/rockcms/2025-10/251001-open-ai-vl-119p-115a9c.jpg"
             alt="OpenAI office with company logo"
@@ -381,8 +383,6 @@ export default function AILandscapePage() {
           </ul>
 
           <EmbeddedTweet id="2020881722003583421" />
-
-          <EmbeddedTweet id="2021374875793801447" />
 
           <ArticleImage
             src="https://americanbazaaronline.com/wp-content/uploads/2026/02/Mrinank-Sharma.png"
