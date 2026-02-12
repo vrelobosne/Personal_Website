@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { Tweet } from "react-tweet";
 
 export const metadata: Metadata = {
   title: "AI Landscape 2026",
@@ -58,49 +59,14 @@ function PullQuote({ children }: { children: React.ReactNode }) {
   );
 }
 
-function TweetEmbed({
-  name,
-  handle,
-  date,
-  href,
-  children,
-}: {
-  name: string;
-  handle: string;
-  date: string;
-  href: string;
-  children: React.ReactNode;
-}) {
+function EmbeddedTweet({ id }: { id: string }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block my-8 p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors group"
+    <div
+      data-theme="dark"
+      className="my-8 [&_[data-theme=dark]]:!bg-transparent"
     >
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-sm">
-            {name.charAt(0)}
-          </div>
-          <div>
-            <div className="text-white font-semibold text-sm">{name}</div>
-            <div className="text-gray-500 text-xs">@{handle}</div>
-          </div>
-        </div>
-        <svg
-          viewBox="0 0 24 24"
-          className="w-5 h-5 text-gray-500 group-hover:text-white/60 transition-colors"
-          fill="currentColor"
-        >
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-        </svg>
-      </div>
-      <div className="text-gray-300 text-[15px] leading-relaxed">
-        {children}
-      </div>
-      <div className="text-gray-600 text-xs mt-3">{date}</div>
-    </a>
+      <Tweet id={id} />
+    </div>
   );
 }
 
@@ -371,36 +337,11 @@ export default function AILandscapePage() {
             </li>
           </ul>
 
-          <TweetEmbed
-            name="Sam Altman"
-            handle="sama"
-            date="Oct 28, 2025"
-            href="https://x.com/sama/status/1983584366547829073"
-          >
-            Yesterday we did a livestream. TL;DR: We have set internal goals of
-            having an automated AI research intern by September of 2026 running
-            on hundreds of thousands of GPUs, and a true automated AI researcher
-            by March of 2028.
-          </TweetEmbed>
-
           <ArticleImage
             src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/rockcms/2025-10/251001-open-ai-vl-119p-115a9c.jpg"
             alt="OpenAI office with company logo"
             caption="OpenAI's GPT-5.3-Codex: the first model that helped build itself. Source: NBC News"
           />
-
-          <TweetEmbed
-            name="Jimmy Ba"
-            handle="jimmybajimmyba"
-            date="Feb 10, 2026"
-            href="https://x.com/jimmybajimmyba/status/2021374875793801447"
-          >
-            Last day at xAI. xAI&apos;s mission is push humanity up the
-            Kardashev tech tree. Grateful to have helped cofound at the start...
-            Recursive self improvement loops likely go live in the next 12mo.
-            2026 is gonna be insane and likely the busiest (and most
-            consequential) year for the future of our species.
-          </TweetEmbed>
 
           {/* Section 4 */}
           <SectionHeading number={4}>
@@ -439,18 +380,9 @@ export default function AILandscapePage() {
             </li>
           </ul>
 
-          <TweetEmbed
-            name="Mrinank Sharma"
-            handle="MrinankSharma"
-            date="Feb 9, 2026"
-            href="https://x.com/MrinankSharma/status/2020881722003583421"
-          >
-            The world is in peril. And not just from AI, or bioweapons, but from
-            a whole series of interconnected crises unfolding in this very
-            moment. We appear to be approaching a threshold where our wisdom
-            must grow in equal measure to our capacity to affect the world, lest
-            we face the consequences.
-          </TweetEmbed>
+          <EmbeddedTweet id="2020881722003583421" />
+
+          <EmbeddedTweet id="2021374875793801447" />
 
           <ArticleImage
             src="https://americanbazaaronline.com/wp-content/uploads/2026/02/Mrinank-Sharma.png"
