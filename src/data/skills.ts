@@ -44,6 +44,16 @@ export const technicalSkills = {
     "Operator Training Simulators"
   ],
 
+  aiAgenticEngineering: [
+    "Multi-Agent Orchestration",
+    "Context Engineering",
+    "Agent Skill Authoring",
+    "Hook & Guardrail Implementation",
+    "MCP Server Development",
+    "Agentic Workflow Design",
+    "RAG & Tool Use Patterns"
+  ],
+
   humanLanguages: [
     "English",
     "Bosnian/Croatian/Serbian",

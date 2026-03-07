@@ -97,6 +97,7 @@ export interface TechnicalSkills {
   tools: string[];
   domains: string[];
   humanLanguages: string[];
+  aiAgenticEngineering: string[];
 }
 
 /**

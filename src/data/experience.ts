@@ -56,4 +56,9 @@ export const achievements: Achievement[] = [
     description: "Building internal tools that improve team productivity",
     icon: "🔧",
   },
+  {
+    title: "AI Agent Infrastructure",
+    description: "Designing agentic workflows with multi-agent orchestration, context engineering, and MCP integrations",
+    icon: "🤖",
+  },
 ];
