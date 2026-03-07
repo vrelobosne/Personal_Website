@@ -10,12 +10,20 @@ import { Project } from '@/types';
 
 export const projects: Project[] = [
   {
-    id: 'portfolio-website',
-    title: 'Portfolio Website',
-    description: 'Interactive portfolio with 3D Earth visualization, voxel rendering, and power grid animations built with Three.js and React Three Fiber.',
+    id: 'project-1',
+    title: 'Project 1',
+    description: 'Coming soon.',
     image: '/images/SM_Landingpage.png',
-    githubUrl: 'https://github.com/vrelobosne/Personal_Website',
-    tags: ['Next.js', 'Three.js', 'TypeScript', 'React']
+    githubUrl: '#',
+    tags: ['Placeholder']
+  },
+  {
+    id: 'project-2',
+    title: 'Project 2',
+    description: 'Coming soon.',
+    image: '/images/SM_Landingpage.png',
+    githubUrl: '#',
+    tags: ['Placeholder']
   },
 ];
 

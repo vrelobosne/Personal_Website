@@ -29,7 +29,8 @@ export const technicalSkills = {
     "Jira",
     "GitHub",
     "GitLab",
-    "Figma"
+    "Figma",
+    "LLM APIs"
   ],
 
   domains: [
@@ -39,6 +40,16 @@ export const technicalSkills = {
     "Energy Management",
     "Transmission Network Analysis",
     "Operator Training Simulators"
+  ],
+
+  aiAgenticEngineering: [
+    "Multi-Agent Orchestration",
+    "Context Engineering",
+    "Agent Skill Authoring",
+    "Hook & Guardrail Implementation",
+    "Tool Use Integration",
+    "Agentic Workflow Design",
+    "RAG & Tool Use Patterns"
   ],
 
   humanLanguages: [

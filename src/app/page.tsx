@@ -6,10 +6,12 @@ import Skills from "@/components/home/Skills";
 import Experience from "@/components/home/Experience";
 import Achievements from "@/components/home/Achievements";
 import Interests from "@/components/home/Interests";
+import AgenticShowcase from "@/components/home/AgenticShowcase";
 import ScrollReveal, { AnimatedCounter } from "@/components/ui/ScrollReveal";
 import GlowingButton from "@/components/ui/GlowingButton";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import Sparkles, { SparklesCore } from "@/components/ui/Sparkles";
+import { projects } from "@/data/projects";
 
 // Dynamically import heavy components - only load on desktop after delay
 const EarthGlobe = dynamic(() => import("@/components/home/EarthGlobe"), {
@@ -89,16 +91,16 @@ export default function Home() {
               </p>
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.9] mb-8 text-white tracking-tight animate-slide-in">
-                I BUILD
+                I SHIP
                 <br />
-                <span className="text-gray-400">SCALABLE</span>
+                <span className="text-gray-400">SOFTWARE</span>
                 <br />
-                SYSTEMS
+                FASTER
               </h1>
 
               <p className="text-base sm:text-lg text-gray-400 mb-10 max-w-md leading-relaxed animate-fade-in-delay">
-                Systems programming, internal tooling, and automation. Building
-                infrastructure that powers enterprise applications.
+                Multi-agent orchestration, systems programming, and intelligent
+                automation. I build the tooling that lets engineers move faster.
               </p>
 
               <div className="animate-fade-in-delay-2">
@@ -175,15 +177,62 @@ export default function Home() {
             </div>
             <div>
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
-                Full Stack
+                Agentic AI
               </div>
               <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider">
-                Development
+                Engineering
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Featured Projects Section */}
+      <ScrollReveal>
+        <section className="py-16 md:py-24 bg-[#0A0A0A]">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Featured Projects
+            </h2>
+            <p className="text-gray-400 mb-10 max-w-xl">
+              A selection of projects I&apos;ve built — from interactive 3D experiences to multi-agent AI systems.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {projects.slice(0, 2).map((project) => (
+                <a
+                  key={project.id}
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#111111] border border-gray-800 rounded-xl overflow-hidden hover:border-white transition-all group"
+                >
+                  <div className="w-full h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                    <span className="text-gray-600 text-sm uppercase tracking-widest">Preview</span>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-white text-lg font-semibold mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm line-clamp-2 mb-4">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="border border-gray-700 text-gray-400 text-xs px-2.5 py-1 rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
 
       {/* Skills Section */}
       <ScrollReveal>
@@ -195,6 +244,11 @@ export default function Home() {
         <div id="achievements">
           <Achievements />
         </div>
+      </ScrollReveal>
+
+      {/* Agentic Engineering Showcase */}
+      <ScrollReveal>
+        <AgenticShowcase />
       </ScrollReveal>
 
       {/* Experience Section */}

@@ -16,8 +16,11 @@ export default function About() {
 
         {/* Bio - Single focused paragraph */}
         <div className="mb-16">
-          <p className="text-lg text-gray-400 leading-relaxed">
+          <p className="text-lg text-gray-400 leading-relaxed mb-6">
             I'm passionate about finding solutions that speed up development and boost productivity. What drives me is the challenge itself—figuring out how to save time and reduce costs while making real impact. With AI, I see an opportunity to shift focus from repetitive, low-value tasks to higher-level decisions that actually matter. It's not about replacing the work, it's about working smarter and spending energy where it counts.
+          </p>
+          <p className="text-lg text-gray-400 leading-relaxed">
+            Recently, I've been deep in agentic AI infrastructure — designing multi-agent orchestration systems and engineering context pipelines that make AI coding assistants dramatically more effective. It's the intersection of systems thinking and AI that I find most compelling: building the scaffolding that lets agents operate reliably at scale.
           </p>
         </div>
 

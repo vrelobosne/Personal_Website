@@ -15,6 +15,7 @@ const tabs = [
   { id: "languages", label: "Languages", data: technicalSkills.languages },
   { id: "tools", label: "Tools & Platforms", data: technicalSkills.tools },
   { id: "domains", label: "Domains", data: technicalSkills.domains },
+  { id: "aiAgentic", label: "AI & Agentic", data: technicalSkills.aiAgenticEngineering },
 ];
 
 export default function Skills() {
