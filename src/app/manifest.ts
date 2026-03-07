@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Elvedin Handzic - Software Engineer',
-    short_name: 'Elvedin',
+    name: 'Dino Handzic - Software Engineer',
+    short_name: 'Dino',
     description: 'Software Engineer building scalable systems and developer tooling',
     start_url: '/',
     display: 'standalone',
