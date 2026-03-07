@@ -6,6 +6,7 @@ import Skills from "@/components/home/Skills";
 import Experience from "@/components/home/Experience";
 import Achievements from "@/components/home/Achievements";
 import Interests from "@/components/home/Interests";
+import AgenticShowcase from "@/components/home/AgenticShowcase";
 import ScrollReveal, { AnimatedCounter } from "@/components/ui/ScrollReveal";
 import GlowingButton from "@/components/ui/GlowingButton";
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -91,7 +92,7 @@ export default function Home() {
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.9] mb-8 text-white tracking-tight animate-slide-in">
                 I BUILD
                 <br />
-                <span className="text-gray-400">INTELLIGENT</span>
+                <span className="text-gray-400">AGENTIC</span>
                 <br />
                 SYSTEMS
               </h1>
@@ -195,6 +196,11 @@ export default function Home() {
         <div id="achievements">
           <Achievements />
         </div>
+      </ScrollReveal>
+
+      {/* Agentic Engineering Showcase */}
+      <ScrollReveal>
+        <AgenticShowcase />
       </ScrollReveal>
 
       {/* Experience Section */}

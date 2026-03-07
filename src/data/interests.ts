@@ -11,26 +11,26 @@ import type { Interest } from "@/types";
 export const interests: Interest[] = [
   {
     number: "01",
+    title: "Agentic Engineering & AI Infrastructure",
+    description:
+      "Building multi-agent systems with Claude Code, designing MCP servers for tool integration, and engineering context pipelines that give AI agents the right information at the right time.",
+  },
+  {
+    number: "02",
     title: "Automation & Workflow Optimization",
     description:
       "Building scripts and tools that eliminate repetitive work - from automated migrations to pipeline optimizations that save engineering teams time.",
   },
   {
-    number: "02",
+    number: "03",
     title: "Internal Developer Tools",
     description:
       "Creating CLI utilities and internal tools that transform engineering workflows and improve team productivity.",
   },
   {
-    number: "03",
+    number: "04",
     title: "Systems Architecture",
     description:
       "Designing scalable, maintainable systems with a focus on performance, reliability, and long-term sustainability.",
-  },
-  {
-    number: "04",
-    title: "Agentic Engineering & AI Infrastructure",
-    description:
-      "Building multi-agent systems with Claude Code, designing MCP servers for tool integration, and engineering context pipelines that give AI agents the right information at the right time.",
   },
 ];

@@ -16,6 +16,7 @@ import type { NavLink } from "@/types";
 const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Agentic", href: "/agentic" },
   { label: "Projects", href: "/projects" },
 ];
 

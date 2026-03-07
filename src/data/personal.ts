@@ -10,13 +10,13 @@ import { PersonalInfo } from '@/types';
 
 export const personalInfo: PersonalInfo = {
   name: "Dino Handzic",
-  title: "Software Engineer & AI Agent Architect",
+  title: "Agentic Engineering & Software Architecture",
   university: "", // Removed for privacy
   email: "", // Removed for privacy
 
   bio: {
     // Short bio for homepage
-    short: "Software Engineer building enterprise energy management systems, developer tooling, and AI agent infrastructure. Experienced in systems programming, multi-agent orchestration, and agentic workflow design.",
+    short: "Agentic Engineering specialist building AI agent infrastructure, multi-agent orchestration systems, and enterprise energy management software.",
 
     // Extended bio for about page
     extended: `I'm a Software Engineer specializing in mission-critical energy infrastructure software, with expertise spanning grid distribution and transmission systems. My work focuses on building reliable, high-performance solutions that power essential services.

@@ -196,3 +196,13 @@ export interface ContactFormData {
  * Form Status States
  */
 export type FormStatus = "idle" | "submitting" | "success" | "error";
+
+/**
+ * Agentic Capability - used in AgenticShowcase section
+ */
+export interface AgenticCapability {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
