@@ -160,7 +160,7 @@ export const componentStyles = {
 
 export const siteConfig = {
   url: "https://elvedin.dev",
-  name: "Elvedin Handzic",
+  name: "Dino Handzic",
   title: "Software Engineer",
   description:
     "Software Engineer building scalable systems, developer tooling, and enterprise infrastructure.",
