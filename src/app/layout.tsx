@@ -17,9 +17,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://elvedin.dev'),
-  title: `${personalInfo.name} - ${personalInfo.title}`,
+  title: personalInfo.name,
   description: `${personalInfo.name}'s personal portfolio. ${personalInfo.title} at ${personalInfo.university} exploring web development, programming, and technology.`,
-  keywords: ['Elvedin Handzic', 'Software Engineer', 'Developer', 'Portfolio', 'Full Stack'],
+  keywords: ['Dino Handzic', 'Software Engineer', 'Developer', 'Portfolio', 'Full Stack'],
   authors: [{ name: personalInfo.name }],
   creator: personalInfo.name,
   // Canonical URL for SEO
