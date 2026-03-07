@@ -163,7 +163,7 @@ export const siteConfig = {
   name: "Dino Handzic",
   title: "Agentic Engineer",
   description:
-    "Agentic Engineering specialist designing multi-agent systems, MCP servers, and AI-powered development infrastructure.",
+    "Agentic Engineering specialist designing multi-agent systems and AI-powered development infrastructure.",
   social: {
     github: "https://github.com/vrelobosne",
     linkedin: "https://www.linkedin.com/in/handzice/",

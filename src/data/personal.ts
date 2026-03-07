@@ -23,7 +23,7 @@ export const personalInfo: PersonalInfo = {
 
 My technical foundation includes deep systems programming in C++ and Fortran, intelligent automation with Python, and modern full-stack development with TypeScript and React. I've architected solutions ranging from legacy system modernization to greenfield developer tooling.
 
-I'm deeply invested in agentic engineering — designing multi-agent systems, building MCP servers, and creating the context engineering pipelines that make AI agents reliable production tools. I approach problems with a systems-thinking mindset, always considering scalability, maintainability, and the emerging role of AI in software architecture.`
+I'm deeply invested in agentic engineering — designing multi-agent systems and creating the context engineering pipelines that make AI agents reliable production tools. I approach problems with a systems-thinking mindset, always considering scalability, maintainability, and the emerging role of AI in software architecture.`
   }
 };
 

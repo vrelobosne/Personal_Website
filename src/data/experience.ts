@@ -42,11 +42,6 @@ export const education = {
 // Key work areas (simplified, no specific metrics)
 export const achievements: Achievement[] = [
   {
-    title: "Legacy System Modernization",
-    description: "Migrating and automating legacy displays and interfaces",
-    icon: "⚡",
-  },
-  {
     title: "Quality & Reliability",
     description: "Identifying and resolving critical system defects",
     icon: "🛡️",
@@ -58,7 +53,7 @@ export const achievements: Achievement[] = [
   },
   {
     title: "AI Agent Infrastructure",
-    description: "Designing agentic workflows with multi-agent orchestration, context engineering, and MCP integrations",
+    description: "Designing agentic workflows with multi-agent orchestration and context engineering",
     icon: "🤖",
   },
 ];

@@ -13,7 +13,7 @@ export const interests: Interest[] = [
     number: "01",
     title: "Agentic Engineering & AI Infrastructure",
     description:
-      "Building multi-agent systems with Claude Code, designing MCP servers for tool integration, and engineering context pipelines that give AI agents the right information at the right time.",
+      "Building multi-agent systems, designing orchestration patterns, and engineering context pipelines that give AI agents the right information at the right time.",
   },
   {
     number: "02",

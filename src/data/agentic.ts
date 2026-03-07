@@ -5,42 +5,42 @@ export const agenticCapabilities: AgenticCapability[] = [
     id: "multi-agent-orchestration",
     title: "Multi-Agent Orchestration",
     description:
-      "Designing specialized agents that collaborate on complex tasks — orchestrators, debuggers, reviewers, and security auditors working in concert.",
+      "I design systems where specialized agents work together on complex tasks. An orchestrator breaks down the problem, delegates to debuggers, reviewers, and security auditors, then integrates the results.",
     icon: "\uD83C\uDFAF",
   },
   {
     id: "context-engineering",
     title: "Context Engineering",
     description:
-      "Engineering pipelines that deliver the right context at the right time — CLAUDE.md files, memory systems, and semantic retrieval for agent effectiveness.",
+      "Getting useful output from an agent depends on feeding it the right context. I build pipelines that pull in relevant files, memory, and instructions so agents have what they need without drowning in noise.",
     icon: "\uD83E\uDDE0",
   },
   {
-    id: "mcp-server-development",
-    title: "MCP Server Development",
+    id: "tool-use-patterns",
+    title: "Tool Use Patterns",
     description:
-      "Building Model Context Protocol servers that give AI agents secure, structured access to external tools, APIs, and data sources.",
+      "Agents are only useful if they can interact with real systems. I wire up tool integrations that let agents read files, run tests, query APIs, and take action safely.",
     icon: "\uD83D\uDD0C",
   },
   {
     id: "hooks-and-guardrails",
     title: "Hooks & Guardrails",
     description:
-      "Implementing deterministic safety layers — pre/post tool-use hooks, validation gates, and automated quality checks that enforce standards 100% of the time.",
+      "Autonomous agents need hard limits. I implement pre- and post-execution hooks, validation gates, and automated quality checks that enforce standards every single time.",
     icon: "\uD83D\uDEE1\uFE0F",
   },
   {
     id: "agent-skill-authoring",
     title: "Agent Skill Authoring",
     description:
-      "Creating reusable agent skills that encode expert workflows — from TDD cycles to security audits — as composable, version-controlled modules.",
+      "I package expert workflows into reusable agent skills. Things like TDD cycles, security audits, and code review all become composable modules an agent can invoke on demand.",
     icon: "\uD83D\uDCDD",
   },
   {
-    id: "rag-and-tool-use",
-    title: "RAG & Tool Use Patterns",
+    id: "rag-and-retrieval",
+    title: "RAG & Retrieval",
     description:
-      "Designing retrieval-augmented generation pipelines and tool-use patterns that let agents search, synthesize, and act on information autonomously.",
+      "I build retrieval-augmented generation pipelines that let agents search codebases, pull documentation, and synthesize information before acting on it.",
     icon: "\uD83D\uDD0D",
   },
 ];

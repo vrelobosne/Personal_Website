@@ -30,8 +30,6 @@ export const technicalSkills = {
     "GitHub",
     "GitLab",
     "Figma",
-    "Claude Code",
-    "MCP Servers",
     "LLM APIs"
   ],
 
@@ -49,7 +47,7 @@ export const technicalSkills = {
     "Context Engineering",
     "Agent Skill Authoring",
     "Hook & Guardrail Implementation",
-    "MCP Server Development",
+    "Tool Use Integration",
     "Agentic Workflow Design",
     "RAG & Tool Use Patterns"
   ],
