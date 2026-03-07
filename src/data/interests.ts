@@ -29,8 +29,8 @@ export const interests: Interest[] = [
   },
   {
     number: "04",
-    title: "AI-Assisted Development",
+    title: "Agentic Engineering & AI Infrastructure",
     description:
-      "Leveraging AI coding agents and Model Context Protocol (MCP) to orchestrate multi-step development workflows — from context engineering to automated testing and validation.",
+      "Building multi-agent systems with Claude Code, designing MCP servers for tool integration, and engineering context pipelines that give AI agents the right information at the right time.",
   },
 ];

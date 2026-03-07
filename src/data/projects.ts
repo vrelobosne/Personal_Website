@@ -17,6 +17,14 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/vrelobosne/Personal_Website',
     tags: ['Next.js', 'Three.js', 'TypeScript', 'React']
   },
+  {
+    id: 'ai-agent-infrastructure',
+    title: 'AI Agent Infrastructure',
+    description: 'Multi-agent orchestration framework with custom MCP servers, context engineering pipelines, and agent skill authoring for Claude Code workflows.',
+    image: '/images/SM_Landingpage.png',
+    githubUrl: 'https://github.com/vrelobosne/Personal_Website',
+    tags: ['Claude Code', 'MCP', 'TypeScript', 'AI Agents']
+  },
 ];
 
 // Helper function to get a single project by ID
