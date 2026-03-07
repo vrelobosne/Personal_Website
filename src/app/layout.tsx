@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://elvedin.dev'),
   title: personalInfo.name,
   description: `${personalInfo.name}'s personal portfolio. ${personalInfo.title} at ${personalInfo.university} exploring web development, programming, and technology.`,
-  keywords: ['Dino Handzic', 'Software Engineer', 'Developer', 'Portfolio', 'Full Stack'],
+  keywords: ['Dino Handzic', 'Software Engineer', 'Developer', 'Portfolio', 'Full Stack', 'AI Agents', 'Agentic Engineering'],
   authors: [{ name: personalInfo.name }],
   creator: personalInfo.name,
   // Canonical URL for SEO
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
     canonical: 'https://elvedin.dev',
   },
   openGraph: {
-    title: `${personalInfo.name} | Software Engineer`,
-    description: 'Software Engineer building scalable systems, developer tooling, and enterprise infrastructure.',
+    title: `${personalInfo.name} | Software Engineer & AI Agent Architect`,
+    description: 'Software Engineer building intelligent systems, AI agent infrastructure, and scalable developer tooling.',
     url: 'https://elvedin.dev',
     siteName: personalInfo.name,
     images: [
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${personalInfo.name} | Software Engineer`,
-    description: 'Software Engineer building scalable systems, developer tooling, and enterprise infrastructure.',
+    title: `${personalInfo.name} | Software Engineer & AI Agent Architect`,
+    description: 'Software Engineer building intelligent systems, AI agent infrastructure, and scalable developer tooling.',
     images: ['/images/SM_Landingpage.png'],
   },
   icons: {
@@ -95,8 +95,8 @@ export default function RootLayout({
                 'https://www.linkedin.com/in/handzice/',
                 'https://github.com/vrelobosne',
               ],
-              jobTitle: 'Software Engineer',
-              description: 'Software Engineer building scalable systems, developer tooling, and enterprise infrastructure.',
+              jobTitle: 'Software Engineer & AI Agent Architect',
+              description: 'Software Engineer building intelligent systems, AI agent infrastructure, and scalable developer tooling.',
             }),
           }}
         />

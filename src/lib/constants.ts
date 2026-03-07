@@ -161,9 +161,9 @@ export const componentStyles = {
 export const siteConfig = {
   url: "https://elvedin.dev",
   name: "Dino Handzic",
-  title: "Software Engineer",
+  title: "Agentic Engineer",
   description:
-    "Software Engineer building scalable systems, developer tooling, and enterprise infrastructure.",
+    "Software Engineer building intelligent systems, AI agent infrastructure, and enterprise-scale agentic workflows.",
   social: {
     github: "https://github.com/vrelobosne",
     linkedin: "https://www.linkedin.com/in/handzice/",

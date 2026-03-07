@@ -91,14 +91,14 @@ export default function Home() {
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.9] mb-8 text-white tracking-tight animate-slide-in">
                 I BUILD
                 <br />
-                <span className="text-gray-400">SCALABLE</span>
+                <span className="text-gray-400">INTELLIGENT</span>
                 <br />
                 SYSTEMS
               </h1>
 
               <p className="text-base sm:text-lg text-gray-400 mb-10 max-w-md leading-relaxed animate-fade-in-delay">
-                Systems programming, internal tooling, and automation. Building
-                infrastructure that powers enterprise applications.
+                Agentic AI, systems programming, and intelligent automation. Building
+                infrastructure where humans and AI agents collaborate at scale.
               </p>
 
               <div className="animate-fade-in-delay-2">
@@ -175,10 +175,10 @@ export default function Home() {
             </div>
             <div>
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
-                Full Stack
+                Agentic AI
               </div>
               <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider">
-                Development
+                Engineering
               </div>
             </div>
           </div>
