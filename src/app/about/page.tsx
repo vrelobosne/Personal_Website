@@ -17,7 +17,7 @@ export default function About() {
         {/* Bio - Single focused paragraph */}
         <div className="mb-16">
           <p className="text-lg text-gray-400 leading-relaxed">
-            I'm passionate about finding solutions that speed up development and boost productivity. What drives me is the challenge itself—figuring out how to save time and reduce costs while making real impact. With AI, I see an opportunity to shift focus from repetitive, low-value tasks to higher-level decisions that actually matter. It's not about replacing the work, it's about working smarter and spending energy where it counts.
+            I'm passionate about finding solutions that speed up development and boost productivity. What drives me is the challenge itself—figuring out how to save time and reduce costs while making real impact. With AI, I see an opportunity to shift focus from repetitive, low-value tasks to higher-level decisions that actually matter. It's not about replacing the work, it's about working smarter and spending energy where it counts. I've been especially focused on agentic AI workflows — using tools like Claude Code and MCP to orchestrate complex development tasks and dramatically compress iteration cycles.
           </p>
         </div>
 

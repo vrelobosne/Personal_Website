@@ -31,6 +31,6 @@ export const interests: Interest[] = [
     number: "04",
     title: "AI-Assisted Development",
     description:
-      "Leveraging AI and MCP (Model Context Protocol) to build, test, and validate applications - analyzing performance and accelerating development cycles.",
+      "Leveraging AI coding agents and Model Context Protocol (MCP) to orchestrate multi-step development workflows — from context engineering to automated testing and validation.",
   },
 ];

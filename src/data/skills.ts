@@ -29,7 +29,10 @@ export const technicalSkills = {
     "Jira",
     "GitHub",
     "GitLab",
-    "Figma"
+    "Figma",
+    "Claude Code",
+    "MCP Servers",
+    "LLM APIs"
   ],
 
   domains: [
